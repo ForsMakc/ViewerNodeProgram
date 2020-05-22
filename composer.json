@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "psr-4": {
+            "ViewerNodeNamespace\\": "src"
+        }
+    },
+    "require": {
+        "react/socket": "^1.4",
+        "cboden/ratchet": "^0.4.2"
+    }
+}
