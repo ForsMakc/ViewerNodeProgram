@@ -18,6 +18,10 @@ body::-webkit-scrollbar-thumb {
     outline: 1px solid slategrey;
 }
 
+.project-elem {
+    cursor: pointer !important;
+}
+
 .sidebar::-webkit-scrollbar {
     width: 1em;
 }

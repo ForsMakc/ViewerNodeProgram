@@ -135,12 +135,7 @@ var render = {
     projectsList: function(projectsList) {
         let html = `<div class="list-group">`;
         for (let [id, name] of Object.entries(projectsList)) {
-            html += `<div class="list-group-item" id="${id}">
-                        <p>${name}</p>
-                    </div>
-                    <div class="list-group-item" id="${id}">
-                        <p>${name}</p>
-                    </div>`;
+            html += `<button type="button" class="project-elem list-group-item list-group-item-action" id="${id}">${name}</button>`;
         }
         html += `</div>`;
         return html;
@@ -311,7 +306,7 @@ function resetState(msg = "Ошибка получения данных серв
 }
 
 $(document).on("click", ".modal-body .btn-node", function() {
-    readerNodeId = $(this).siblings("input").val();
+    readerNodeId = $(".readerNode").val();
     let pocketData = new ResponsePocket();
     pocketData.setHeader(pocketData.NODE);
     pocketData.setNodeId(readerNodeId);
@@ -319,7 +314,7 @@ $(document).on("click", ".modal-body .btn-node", function() {
     responseStates.nextState();
 });
 
-$(document).on("click", ".modal-body .list-group-item", function() {
+$(document).on("click", ".modal-body .project-elem", function() {
     let sProjectId = $(this).attr("id");
     let metaData = {
         nodeId: readerNodeId,
