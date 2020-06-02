@@ -123,17 +123,22 @@ class ResponseStates {
 var render = {
     nodeInput: function() {
         return `<form class="form-inline">
+                  <div class="form-group mb-2">
                     <label for="readerNode"><b>Идентификатор считывающего узла:</b></label>
-                  <div class="form-group">
-                    <input type="text" name="readerNode" class="readerNode form-control" id="readerNode">
-                    <input type="button" class="btn btn-secondary mb-2 btn-node" value="Выбрать считывающий узел">
                   </div>
+                  <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" name="readerNode" class="readerNode form-control" id="readerNode">
+                  </div>
+                  <input type="button" class="btn btn-secondary mb-2 btn-node" value="Выбрать считывающий узел">
                 </form>`;
     },
     projectsList: function(projectsList) {
-        let html = `<div class="projects-list-wrap">`;
+        let html = `<div class="list-group">`;
         for (let [id, name] of Object.entries(projectsList)) {
-            html += `<div class="project-element" id="${id}">
+            html += `<div class="list-group-item" id="${id}">
+                        <p>${name}</p>
+                    </div>
+                    <div class="list-group-item" id="${id}">
                         <p>${name}</p>
                     </div>`;
         }
@@ -314,7 +319,7 @@ $(document).on("click", ".modal-body .btn-node", function() {
     responseStates.nextState();
 });
 
-$(document).on("click", ".modal-body .project-element", function() {
+$(document).on("click", ".modal-body .list-group-item", function() {
     let sProjectId = $(this).attr("id");
     let metaData = {
         nodeId: readerNodeId,
